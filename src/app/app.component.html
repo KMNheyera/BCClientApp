@@ -1,5 +1,11 @@
 <div class="container p-t-5">
   <app-header></app-header>
+  <div class="container">
+
+    <div class="alert alert-success" role="alert" [hidden]="!IsSuccessMessage">
+      {{ message }}
+    </div>
+  </div>
   <tabset>
     <tab heading="Clients">
       <div class="container">
@@ -58,6 +64,8 @@
       </div>
     </tab>
   </tabset>
-  <div class="container"> <Button Class="btn btn-primary col-12" (click)="linkClient()">Link Contact to Client</Button>
-</div></div>
+  <div class="container"> 
+    <Button Class="btn btn-primary col-12" (click)="linkClient()">Link Contact to Client</Button>
+  </div>
+</div>
 <router-outlet></router-outlet>
