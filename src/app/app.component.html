@@ -1,0 +1,63 @@
+<div class="container p-t-5">
+  <app-header></app-header>
+  <tabset>
+    <tab heading="Clients">
+      <div class="container">
+        <div class="card list-header">
+          <ul class="list-group list-group-horizontal list-group-item-secondary">
+            <li class="list-group-item col-2">Name</li>
+            <li class="list-group-item col-2">Client Code</li>
+            <li class="list-group-item col-4 text-center">No. of linked contacts</li>
+            <li class="list-group-item col-4"></li>
+          </ul>
+        </div>
+        <div *ngFor="let client of clients$ | async; index as i" >
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item col-2">{{ client.name }}</li>
+            <li class="list-group-item col-2">{{ client.clientCode }}</li>
+            <li class="list-group-item col-4 text-center">{{ client.numContacts | noclientexist }}</li>
+            <li class="list-group-item col-4">
+              <Button Class="btn btn-primary"  (click)="unlinkClient(client)" [disabled]="client.numContacts < 1">unlink</Button>
+            </li>
+          </ul>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item text-center">
+            <Button Class="btn btn-primary" (click)="AddNewClient()">Add Client</Button>
+          </li>
+        </ul>
+      </div>
+
+    </tab>
+    <tab heading="Contacts">
+      <div class="container">
+        <div class="card list-header">
+          <ul class="list-group list-group-horizontal list-group-item-secondary">
+            <li class="list-group-item col-2">Name</li>
+            <li class="list-group-item col-2">Surname</li>
+            <li class="list-group-item col-3">Email</li>
+            <li class="list-group-item col-3 text-center">No. of linked clients</li>
+            <li class="list-group-item col-2"></li>
+          </ul>
+        </div>
+        <div *ngFor="let contact of contacts$ | async; index as i" >
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item col-2">{{ contact.name }}</li>
+            <li class="list-group-item col-2">{{ contact.surname }}</li>
+            <li class="list-group-item col-3">{{ contact.email }}</li>
+            <li class="list-group-item col-3 text-center">{{ contact.numClients | nocontactexist }}</li>
+            <li class="list-group-item col-2">
+              <Button Class="btn btn-primary" (click)="unlinkContact(contact)" [disabled]="contact.numClients < 1"  >unlink</Button>
+            </li>
+          </ul>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item text-center">
+            <Button Class="btn btn-primary" (click)="AddNewContact()">Add Contact</Button>
+        </ul>
+      </div>
+    </tab>
+  </tabset>
+  <div class="container"> <Button Class="btn btn-primary col-12" (click)="linkClient()">Link Contact to Client</Button>
+</div></div>
+<router-outlet></router-outlet>
