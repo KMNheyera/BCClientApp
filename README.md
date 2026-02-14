@@ -1,4 +1,6 @@
-# CoffeeApp
+<img width="2834" height="1063" alt="image" src="https://github.com/user-attachments/assets/aa040166-dacb-4f98-86e6-3611eff9adf1" />
+
+# ClienytApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
 
