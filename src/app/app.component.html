@@ -18,7 +18,7 @@
               <div class="w-50">
                 <search-bar
                   placeholder="Search Clients..."
-                  (search)="onSerchClient($event)">
+                  (search)="onSearchClient($event)">
                 </search-bar>
               </div>
             </div>
@@ -44,7 +44,7 @@
         <li class="col-12 list-group-item text-center">
           <div class="form-group">
               <app-pagination
-                [rowCount]="totalClientRows$ | async"
+                [rowCount]="(totalClientRows$ | async) ?? 0"
                 [pageSize]="clientRowCount"
                 (pageChanged)="loadClientPage($event)">
               </app-pagination>
@@ -92,7 +92,7 @@
         <li class="col-12 list-group-item text-center">
           <div class="form-group">
              <app-pagination
-                [rowCount]="totalContactRows$ | async"
+                [rowCount]="(totalContactRows$ | async) ?? 0"
                 [pageSize]="contactRowCount"
                 (pageChanged)="loadContactPage($event)">
               </app-pagination>

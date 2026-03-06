@@ -160,7 +160,7 @@ AddNewClient(){
       );
   }
 
-  onSerchClient(searchText: string) {
+  onSearchClient(searchText: string) {
     this.clientPageNumber = 1;
     if(searchText === ""){
       this.initialiseData();

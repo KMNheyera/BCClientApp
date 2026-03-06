@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 })
 export class PaginationComponent implements OnChanges {
 
-  @Input() rowCount: number | null = 0;
+  @Input() rowCount: number = 0;
   @Input() pageSize: number = 10;
   @Input() name: string = 'Data';
 
