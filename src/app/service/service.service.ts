@@ -12,7 +12,7 @@ import { IResponseObject } from '../interfaces/response-object';
 })
 export class ServiceService {
 
-  url = "https://localhost:44322/api"
+  url = "http://localhost:8080/api"
   constructor(
       private http: HttpClient,
   ) { }
