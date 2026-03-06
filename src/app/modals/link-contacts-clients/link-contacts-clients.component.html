@@ -25,7 +25,7 @@
       *ngFor="let contact of contacts$ | async"
       [value]="contact.contactId"
     >
-      {{ contact.name }}
+      {{ contact.surname }} {{ contact.name }}
     </option>
   </select>
 </div>
@@ -44,7 +44,7 @@
       *ngFor="let client of clients$ | async"
       [value]="client.clientId"
     >
-      {{ client.name }}
+      {{ client.name }} ({{ client.clientCode }})
     </option>
   </select>
 </div>

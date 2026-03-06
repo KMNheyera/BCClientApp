@@ -14,14 +14,14 @@
     <tab heading="Clients">
       <div class="container">
         <div class="card list-header">
-          <ul class="list-group d-flex flex-row">
-            <li class="col-12 list-group-item text-center">
+          <div class="d-flex justify-content-center my-3">
+              <div class="w-50">
                 <search-bar
                   placeholder="Search Clients..."
                   (search)="onSerchClient($event)">
                 </search-bar>
-            </li>
-          </ul>
+              </div>
+            </div>
           <ul class="list-group list-group-horizontal list-group-item-secondary">
             <li class="list-group-item col-2">Name</li>
             <li class="list-group-item col-2">Client Code</li>
@@ -51,26 +51,24 @@
           </div>
         </li>
       </ul>
-
         <ul class="list-group">
           <li class="list-group-item text-center">
             <Button Class="btn btn-primary" (click)="AddNewClient()">Add Client</Button>
           </li>
         </ul>
       </div>
-
     </tab>
     <tab heading="Contacts">
       <div class="container">
         <div class="card list-header">
-           <ul class="list-group d-flex flex-row">
-            <li class="col-12 list-group-item text-center">
+           <div class="d-flex justify-content-center my-3">
+              <div class="w-50">
                 <search-bar
                   placeholder="Search Contacts..."
                   (search)="onSearchContact($event)">
                 </search-bar>
-            </li>
-          </ul>
+              </div>
+            </div>
           <ul class="list-group list-group-horizontal list-group-item-secondary">
             <li class="list-group-item col-2">Name</li>
             <li class="list-group-item col-2">Surname</li>
