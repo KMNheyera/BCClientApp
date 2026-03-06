@@ -35,11 +35,11 @@ export class LinkContactsClientsComponent {
           setDialogProps(properties: any){
             this.title = properties.title
 
-            this.contacts$ = this.symService.GetContacts(1, 10).pipe(
+            this.contacts$ = this.symService.GetContacts(1, 50).pipe(
               map(res => res.payload)
             );
 
-            this.clients$ = this.symService.GetClients(1, 10).pipe(
+            this.clients$ = this.symService.GetClients(1, 50).pipe(
                   map(res => res.payload)
                 );
           }

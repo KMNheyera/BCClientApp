@@ -1,0 +1,17 @@
+services:
+  client-manage-app:
+    build: .
+    container_name: client-app
+    ports:
+      - "4201:80"
+    volumes:
+      - ./dist/client-manage-app:/usr/share/nginx/html:ro
+
+  client-app-4202:
+    build: .
+    container_name: client-app-4202
+    ports:
+      - "4202:80"
+    volumes:
+      - ./dist/client-manage-app:/usr/share/nginx/html:ro
+

@@ -15,6 +15,8 @@ import { ClientComponent } from './modals/client/client.component';
 import { UnlinkClientComponent } from './modals/unlink-client/unlink-client.component';
 import { UnlinkContactComponent } from './modals/unlink-contact/unlink-contact.component';
 import { LinkContactsClientsComponent } from './modals/link-contacts-clients/link-contacts-clients.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -26,7 +28,9 @@ import { LinkContactsClientsComponent } from './modals/link-contacts-clients/lin
     ClientComponent,
     UnlinkClientComponent,
     UnlinkContactComponent,
-    LinkContactsClientsComponent
+    LinkContactsClientsComponent,
+    PaginationComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

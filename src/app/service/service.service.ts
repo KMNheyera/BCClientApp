@@ -1,30 +1,58 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, filter } from 'rxjs/operators';
-import { ICart } from '../interfaces/cart';
 import { IPayment } from '../interfaces/payment';
 import { IUser } from '../interfaces/user';
 import { ICreateContactDto } from '../interfaces/createContactDto';
+import { IResponseObject } from '../interfaces/response-object';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
 
-  url = "https://localhost:44345/api"
+  url = "https://localhost:44322/api"
   constructor(
       private http: HttpClient,
   ) { }
 
-  GetClients(PageNumber: number = 1, PageSize: number = 5): Observable<any> {
-    return this.http.get(`${this.url}/Client/get-clients?PageNumber=${PageNumber}&PageSize=${PageSize}`).pipe(
+  GetClients(PageNumber: number = 1, PageSize: number = 5, SearchText?: string): Observable<any> {
+    let url = `${this.url}/Client/get-clients?PageNumber=${PageNumber}&PageSize=${PageSize}`;
+    if (SearchText) {
+      url += `&SearchCriteria=${SearchText}`;
+    }
+    return this.http.get(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  GetClientsCount(SearchText?: string): Observable<any> {
+    let url = `${this.url}/Client/get-clients-count`;
+    if (SearchText) {
+      url += `?SearchCriteria=${SearchText}`;
+    }
+    return this.http.get(url).pipe(
       catchError(this.handleError)
     );
   }
   
-  GetContacts(PageNumber: number = 1, PageSize: number = 5): Observable<any> {
-    return this.http.get(`${this.url}/Contact/get-contacts?PageNumber=${PageNumber}&PageSize=${PageSize}`).pipe(
+  GetContacts(PageNumber: number = 1, PageSize: number = 5, SearchText?: string): Observable<any> {
+    let url = `${this.url}/Contact/get-contacts?PageNumber=${PageNumber}&PageSize=${PageSize}`;
+    if (SearchText) {
+      url += `&SearchCriteria=${SearchText}`;
+    }
+    return this.http.get(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  GetContactsCount(SearchText?: string): Observable<any> {
+    let url = `${this.url}/Contact/get-contacts-count`;
+    if (SearchText) {
+      url += `?SearchCriteria=${SearchText}`;
+    }
+    return this.http.get(url).pipe(
       catchError(this.handleError)
     );
   }
@@ -106,14 +134,27 @@ export class ServiceService {
     );
   }
 
-   Payment(obj: IPayment): Observable<any>{
-    return this.http.post(`${this.url}/Product/Payment`, obj).pipe(
-      catchError(this.handleError)
-    );
+
+  handleError(error: HttpErrorResponse): Observable<IResponseObject<any>>  {
+  console.log('error.status', error.status);
+  console.log('error.message', error.message);
+  let message = 'An unknown error occurred';
+
+  debugger
+
+  // Customize message based on error type
+  if (error.error instanceof ErrorEvent) {
+    // Client-side or network error
+    message = `Client-side error: ${error.error.message}`;
+  } else {
+    // Server-side error
+    message = `Server Error`;
   }
 
-  handleError(error: HttpErrorResponse) {
-    console.log('error.status', error.status)
-    return throwError(error);
-  }
+  return of({
+    payload: null,
+    message,
+    success: false,
+  });
+}
 }
